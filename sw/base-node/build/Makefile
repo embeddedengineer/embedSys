@@ -11,13 +11,13 @@ CLOCK      = 16000000
 PROGRAMMER = usbasp
 
 # Fuse values for avr: low.
-LFU = 0xFF
+LFU        = 0xFF
 
 # Fuse values for avr: high.
-HFU = 0xD9
+HFU        = 0xD9
 
 # Fuse values for avr: extended.
-EFU = 0xFF
+EFU        = 0xFF
 
 # Microcontroller fuses. 
 FUSES      = -U lfuse:w:$(LFU):m -U hfuse:w:$(HFU):m -U efuse:w:$(EFU):m
