@@ -6,15 +6,17 @@
 #include <util/delay.h>
 #include "led.h"
 
-// Set PortD as output. 
-void outputPortD(){
-    DDRD = 0xff;
+static void _delay_s(uint8_t secs);
+
+static void _delay_s(uint8_t secs){
+    while (secs--) _delay_ms(MS_TO_SECS);
 }
 
-// Toggle all the leds on PORTD (-ve) logic.
-void toggleLed(){
-    PORTD = 0x00;    // Turn ON all the Leds connected to PORTD.
-    _delay_ms(2000); // Wait for some time.
-    PORTD = 0xff;    // Turn OFF all the Leds connected to PORTD.
-    _delay_ms(4000); // Wait for some time.  
+void toggleLed(uint8_t ledNo, uint8_t delay){
+    if(!setLedOn(ledNo)){
+        // print error message when UART is ready.
+    } else {
+        _delay_s(delay);
+        setLedOff(ledNo);
+    }
 }

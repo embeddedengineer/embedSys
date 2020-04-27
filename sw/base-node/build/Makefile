@@ -31,11 +31,14 @@ OBJCOPY    = avr-objcopy
 # Output file name.
 OUT_FILE   = $(NODE_NAME)-node
 
-# Source files name.
-SRC        = led 
+# Source app files name.
+SRC_APP    = led 
+
+# Soruce hal files name.
+SRC_HAL    = hal_led
 
 # Object files list.
-OBJFILES   = ../src/main.o $(patsubst %, ../src/app/%.o, $(SRC))
+OBJFILES   = ../src/main.o $(patsubst %, ../src/app/%.o, $(SRC_APP)) $(patsubst %, ../src/hal/%.o, $(SRC_HAL))
 
 # Release directory.
 REL_DIR    = ../../Release
